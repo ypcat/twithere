@@ -28,7 +28,7 @@ function twithere(url){
 
 if(window.parent == window){ // not iframes
     $('body').append(
-        '<div id="twithere" style="position:absolute; top:10px; left:10px; width:400px; background-color:red; z-index:5566; " >' +
+        '<div id="twithere" style="position:absolute; top:10px; left:10px; width:auto; max-width:400px; background-color:red; color:cyan; opacity:0.8; z-index:5566; " >' +
         '<a id="twithere_toggle">twithere</a>' + ' ' +
         '<span id="twithere_count">0</span>' +
         '<div id="twithere_content" style="display:none; " />' +
