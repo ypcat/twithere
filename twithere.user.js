@@ -26,7 +26,7 @@ function twithere(url){
     });
 }
 
-if(window.parent == window){ // not iframes
+if(window.parent == window){ // process only main page, not iframes
     $('body').append(
         '<div id="twithere" style="position:absolute; top:10px; left:10px; width:auto; max-width:400px; background-color:red; color:cyan; opacity:0.8; z-index:5566; " >' +
         '<a id="twithere_toggle">twithere</a>' + ' ' +
