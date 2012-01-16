@@ -14,8 +14,13 @@ function twithere(url){
             for(i in search.results){
                 tweet = search.results[i];
                 $('#twithere_content').append(
-                    '<div><img src="' + tweet.profile_image_url + '" />' +
-                    tweet.from_user + ': ' + tweet.text +
+                    '<div style="clear:both; border-bottom:1px solid crimson; padding:4px; min-height:48px">' +
+                        '<div style="float:left">' +
+                            '<img src="' + tweet.profile_image_url + '" style="border-radius:5px;" />' +
+                        '</div>' +
+                        '<div style="margin-left:58px;">' +
+                            tweet.from_user + ': ' + tweet.text +
+                        '</div>' +
                     '</div>'
                 );
                 $('#twithere_count').text(function(index, text){
@@ -28,7 +33,7 @@ function twithere(url){
 
 if(window.parent == window){ // process only main page, not iframes
     $('body').append(
-        '<div id="twithere" style="position:absolute; top:10px; left:10px; width:auto; max-width:400px; background-color:red; color:cyan; opacity:0.8; z-index:5566; " >' +
+        '<div id="twithere" style="position:absolute; top:10px; left:10px; width:auto; max-width:400px; color:navy; opacity:0.9; z-index:5566; border-radius:5px; padding:3px; background-image: -moz-linear-gradient(left, rgb(245,142,32) 10%, rgb(255,0,0) 58%); " >' +
         '<a id="twithere_toggle">twithere</a>' + ' ' +
         '<span id="twithere_count">0</span>' +
         '<div id="twithere_content" style="display:none; " />' +
