@@ -8,7 +8,7 @@
 function twithere(url){
     GM_xmlhttpRequest({
         method: "GET",
-        url: "http://search.twitter.com/search.json?q="+encodeURIComponent(url),
+        url: "http://search.twitter.com/search.json"+url,
         onload: function(response) {
             search = eval('('+response.responseText+')');
             for(i in search.results){
@@ -27,6 +27,13 @@ function twithere(url){
                     return Number(text) + 1;
                 });
             }
+            if(search.next_page){
+                $('#twithere_content').append('<a id="twithere_more">more</a>');
+                $('#twithere_more').click(function(){
+                    $(this).remove();
+                    twithere(search.next_page);
+                });
+            }
         }
     });
 }
@@ -42,6 +49,7 @@ if(window.parent == window){ // process only main page, not iframes
     $('#twithere_toggle').click(function(){
         $('#twithere_content').toggle();
     });
-    twithere(window.location.href);
+    var url = "?q="+encodeURIComponent(window.location.href);
+    twithere(url);
 }
 
