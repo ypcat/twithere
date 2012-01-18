@@ -43,7 +43,7 @@ function twithere(url){
 function linkify(txt){
     if(txt)
     txt = txt.replace(
-	    /((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,
+        /((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,
         function(_url){
             var full_url = _url;
             if (!full_url.match('^https?:\/\/')) {
