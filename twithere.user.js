@@ -19,7 +19,7 @@ function twithere(url){
                             '<img src="' + tweet.profile_image_url + '" style="border-radius:5px;" />' +
                         '</div>' +
                         '<div style="margin-left:58px;">' +
-                            '<span style="color:black;">'+ 
+                            '<span style="color:black;">'+
                             tweet.from_user + ': '+
                             '</span>'+ 
                             linkify(tweet.text) +
@@ -31,8 +31,8 @@ function twithere(url){
                 });
             }
             if(search.next_page){
-                $('#twithere_content').append('<a id="twithere_more">more</a>');
-                $('#twithere_more').click(function(){
+                $('#twithere_content').append('<a id="twithere_more" style="cursor:pointer;">more</a>');
+                $('#twithere_more').hover(function(){
                     $(this).remove();
                     twithere(search.next_page);
                 });
@@ -58,7 +58,7 @@ function linkify(txt){
 if(window.parent == window){ // process only main page, not iframes
     $('body').append(
         '<div id="twithere" style="position:absolute; top:10px; left:10px; width:auto; max-width:400px; color:navy; opacity:0.9; z-index:5566; border-radius:5px; padding:3px; background-image: -moz-linear-gradient(left, rgb(245,142,32) 10%, rgb(255,0,0) 58%); " >' +
-        '<a id="twithere_toggle">twithere</a>' + ' ' +
+        '<a id="twithere_toggle" style="cursor:pointer;">twithere</a>' + ' ' +
         '[<span id="twithere_count">0</span>]' +
         '<div id="twithere_content" style="display:none; " />' +
         '</div>'
