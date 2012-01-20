@@ -66,17 +66,14 @@ function parseTwitterDate(txt) {
 function fuzz_tm(sec)
 {
     var str= '';
-    var t= { val: 0, unit: str };
-    var s= (((sec % 31536000) % 86400) % 3600) % 60;
-    if( s>0 ) t= { val:s, unit: 'sec' };
-    var m= Math.floor((((sec % 31536000) % 86400) % 3600) / 60);
-    if( m>0 ) t= { val:m, unit: 'min' };
-    var h= Math.floor(((sec % 31536000) % 86400) / 3600);
-    if( h>0 ) t= { val:h, unit: 'hour' };
-    var d= Math.floor((sec % 31536000) / 86400); 
-    if( d>0 ) t= { val:d, unit: 'day' };
-    if( t.val>0 ) str= t.val+' '+t.unit+(t.val>1?'s':'')+' ago';
-    return str;
+    var t= [(sec)];
+    var def= {'year':31536000,'day':86400,'hour':3600,'min':60,'sec':1};
+    Object.keys(def).map(function(unit,j){
+    	t.splice(j,1,Math.floor(t[j]/def[unit]),t[j]%def[unit]);
+    	if(t[j]>0 && str.length<8)
+    		str+=(t[j]+' '+unit+(t[j]>1?'s':'')+' ');
+    });
+    return str+'ago';
 }
 var now= new Date();
 function time_interp(date_t){
@@ -100,5 +97,4 @@ if(window.parent == window){ // process only main page, not iframes
     var url = "?q="+encodeURIComponent(window.location.href);
     twithere(url);
 }
-
 
