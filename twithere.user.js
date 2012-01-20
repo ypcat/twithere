@@ -64,7 +64,7 @@ if(window.parent == window){ // process only main page, not iframes
         '</div>'
     )
     $('#twithere_toggle').click(function(){
-        $('#twithere_content').toggle();
+        $('#twithere_content').toggle('fast');
     });
     var url = "?q="+encodeURIComponent(window.location.href);
     twithere(url);
