@@ -93,7 +93,6 @@ if(window.parent == window){ // process only main page, not iframes
         '</div>'
     )
     $('#twithere_toggle').click(function(){
-        $('#twithere_content').toggle('fast');
         var sw= $('#twithere_content').is(':hidden');
         $('#twithere').css('position',(sw?'absolute':'fixed'));
         $('#twithere_content').toggle('fast');
